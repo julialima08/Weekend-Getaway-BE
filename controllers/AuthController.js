@@ -9,7 +9,7 @@ const Login = async (req, res) => {
     })
     if (
       user &&
-      (await middleware.comparePassword(user.passworddigest, req.body.password))
+      (await middleware.comparePassword(user.passwordDigest, req.body.password))
     ) {
       let payload = {
         id: user.id,
@@ -26,9 +26,9 @@ const Login = async (req, res) => {
 
 const Register = async (req, res) => {
   try {
-    const { email, password, name, username } = req.body
-    let passworddigest = await middleware.hashPassword(password)
-    const user = await User.create({ email, passworddigest, name, username })
+    const { email, password, name } = req.body
+    let passwordDigest = await middleware.hashPassword(password)
+    const user = await User.create({ email, passwordDigest, name })
     res.send(user)
   } catch (error) {
     throw error
@@ -43,12 +43,12 @@ const UpdatePassword = async (req, res) => {
     if (
       user &&
       (await middleware.comparePassword(
-        user.dataValues.passworddigest,
+        user.dataValues.passwordDigest,
         req.body.oldPassword
       ))
     ) {
-      let passworddigest = await middleware.hashPassword(req.body.newPassword)
-      await user.update({ passworddigest })
+      let passwordDigest = await middleware.hashPassword(req.body.newPassword)
+      await user.update({ passwordDigest })
       return res.send({
         status: 'success!',
         msg: `pass updated`
