@@ -5,7 +5,7 @@ const GetUserTrips = async (req, res) => {
   try {
     let userId = parseInt(req.params.userId)
     const trips = await User.findByPk(userId, {
-      include: { model: Trip, as: 'creator' }
+      include: { model: Trip }
     })
     res.send(trips)
   } catch (error) {

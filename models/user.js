@@ -7,7 +7,6 @@ module.exports = (sequelize, DataTypes) => {
 
     static associate(models) {
       User.hasMany(models.Trip, {
-        as: 'creator',
         foreignKey: 'userId'
       })
     }
@@ -21,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: 'CASCADE',
       references: {
         model: 'trips',
-        key: 'userId'
+        key: 'id'
       }
     },
   }, {

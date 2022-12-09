@@ -1,8 +1,8 @@
-const { Trip } = require('../models')
+const { Trip, Flight } = require('../models')
 
 const GetTrips = async (req, res) => {
   try {
-    const trips = await Trip.findAll()
+    const trips = await Trip.findAll({ include: { model: Flight }})
     res.send(trips)
   } catch (error) {
     throw error
@@ -11,7 +11,7 @@ const GetTrips = async (req, res) => {
 
 const GetTripById = async (req, res) => {
   try {
-    const trips = await Trip.findByPk(req.params.Trip_Id)
+    const trips = await Trip.findByPk(req.params.tripId)
     res.send(trips)
   } catch (error) {
     throw error
@@ -31,7 +31,7 @@ const UpdateTrip = async (req, res) => {
   try {
     const trips = await Trip.update(
       { ...req.body },
-      { where: { id: req.params.Trip_Id }, returning: true }
+      { where: { id: req.params.tripId }, returning: true }
     )
     res.send(trips)
   } catch (error) {
@@ -41,7 +41,7 @@ const UpdateTrip = async (req, res) => {
 
 const DeleteTrip = async (req, res) => {
   try {
-    let TripId = parseInt(req.params.Trip_Id)
+    let TripId = parseInt(req.params.tripId)
     await Trip.destroy({ where: { id: TripId } })
     res.send({
       msg: `Trip ${TripId} Deleted`

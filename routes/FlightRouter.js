@@ -8,6 +8,7 @@ router.get(
   middleware.verifyToken,
   controller.GetFlights
 )
+router.post('/create', controller.CreateFlight)
 
 
 module.exports = router

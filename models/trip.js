@@ -11,8 +11,10 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       Trip.belongsTo(models.User, {
-        as: 'trip',
-        foreignKey: 'trips'
+        foreignKey: 'userId'
+      })
+      Trip.hasMany(models.Flight, {
+        foreignKey: 'tripId'
       })
     }
   }
@@ -26,9 +28,16 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     title: DataTypes.STRING,
-    date: DataTypes.STRING,
+    date: DataTypes.DATE,
     destination: DataTypes.STRING,
-    flights: DataTypes.STRING
+    flights: {
+      type: DataTypes.STRING,
+      onDelete: 'CASCADE',
+      references: {
+        model: 'flight',
+        key: 'id'
+      }
+    }
   }, {
     sequelize,
     modelName: 'Trip',
