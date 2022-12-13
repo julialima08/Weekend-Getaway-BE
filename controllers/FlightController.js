@@ -18,7 +18,20 @@ const CreateFlight = async (req, res) => {
   }
 }
 
+const DeleteFlight = async (req, res) => {
+  try {
+    let FlightId = parseInt(req.params.flightId)
+    await Flight.destroy({ where: { id: FlightId } })
+    res.send({
+      msg: `Flight ${FlightId} Deleted`
+    })
+  } catch (error) {
+    throw error
+  }
+}
+
 module.exports= {
   GetFlights,
-  CreateFlight
+  CreateFlight,
+  DeleteFlight
 }

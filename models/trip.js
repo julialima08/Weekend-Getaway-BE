@@ -14,7 +14,8 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'userId'
       })
       Trip.hasMany(models.Flight, {
-        foreignKey: 'tripId'
+        foreignKey: 'tripId',
+        as: 'flights'
       })
     }
   }
@@ -30,14 +31,14 @@ module.exports = (sequelize, DataTypes) => {
     title: DataTypes.STRING,
     date: DataTypes.DATE,
     destination: DataTypes.STRING,
-    flights: {
-      type: DataTypes.STRING,
-      onDelete: 'CASCADE',
-      references: {
-        model: 'flight',
-        key: 'id'
-      }
-    }
+    // flights: {
+    //   type: DataTypes.STRING,
+    //   onDelete: 'CASCADE',
+    //   references: {
+    //     model: 'flight',
+    //     key: 'id'
+    //   }
+    // }
   }, {
     sequelize,
     modelName: 'Trip',
