@@ -18,15 +18,15 @@ module.exports = (sequelize, DataTypes) => {
   }
   Flight.init({
     airline: DataTypes.STRING,
-    price: DataTypes.INTEGER,
+    price: DataTypes.STRING,
     departure: DataTypes.STRING,
     arrival: DataTypes.STRING,
-    departureCity: DataTypes.STRING,
     departureAirport: DataTypes.STRING,
-    arrivalCity: DataTypes.STRING,
     arrivalAirport: DataTypes.STRING,
-    duration: DataTypes.INTEGER,
-    stops: DataTypes.STRING,
+    departure2: DataTypes.STRING,
+    arrival2: DataTypes.STRING,
+    departureAirport2: DataTypes.STRING,
+    arrivalAirport2: DataTypes.STRING,
     tripId: {
       type: DataTypes.INTEGER,
       onDelete: 'CASCADE',

@@ -13,31 +13,31 @@ module.exports = {
         type: Sequelize.STRING
       },
       price: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       departure: {
-        type: Sequelize.DATE
+        type: Sequelize.STRING
       },
       arrival: {
-        type: Sequelize.DATE
-      },
-      departureCity: {
         type: Sequelize.STRING
       },
       departureAirport: {
         type: Sequelize.STRING
       },
-      arrivalCity: {
-        type: Sequelize.STRING
-      },
       arrivalAirport: {
         type: Sequelize.STRING
       },
-      duration: {
-        type: Sequelize.INTEGER
+      departure2: {
+        type: Sequelize.STRING
       },
-      stops: {
-        type: Sequelize.INTEGER
+      arrival2: {
+        type: Sequelize.STRING
+      },
+      departureAirport2: {
+        type: Sequelize.STRING
+      },
+      arrivalAirport2: {
+        type: Sequelize.STRING
       },
       tripId: {
         type: Sequelize.INTEGER
