@@ -17,8 +17,8 @@ Router.delete(
   middleware.verifyToken,
   controller.DeleteTrip
 )
-Router.put('/remove/:tripId', controller.removeFlightFromTrip)
-// Router.put('/:tripId', controller.addFlightToTrip)
+
+
 
 
 module.exports = Router
