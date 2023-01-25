@@ -10,7 +10,7 @@ module.exports = {
     dialect: 'postgres'
   },
   production: {
-    use_env_variable: 'https://git.heroku.com',
+    use_env_variable: 'DATABASE_URL',
     dialect: 'postgres',
     dialectOptions: {
       ssl: {
