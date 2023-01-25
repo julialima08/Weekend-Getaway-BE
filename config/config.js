@@ -10,8 +10,9 @@ module.exports = {
     dialect: 'postgres'
   },
   production: {
-    use_env_variable: 'https://git.heroku.com/wg-backend.git',
+    use_env_variable: 'DATABASE_URL',
     dialect: 'postgres',
+    protocol: "postgres",
     dialectOptions: {
       ssl: {
         rejectUnauthorized: false,
